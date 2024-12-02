@@ -20,7 +20,7 @@ jobs:
       - name: Run docker-compose
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
-          compose-file: "./create-standalone/standalone-compose"
+          compose-file: "./standalone-compose"
 
       - uses: actions/setup-python@v5
         with:
