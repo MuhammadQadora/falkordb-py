@@ -1,0 +1,17 @@
+FROM falkordb/falkordb:edge AS falkordb
+
+FROM redis AS redis
+
+WORKDIR /data
+
+RUN apt update && apt install libgomp1 -y
+
+COPY ./node.conf /data/node.conf
+
+COPY ./sentinel.conf /data/sentinel.conf
+
+COPY ./script.sh /data/script.sh
+
+COPY --from=falkordb /FalkorDB /FalkorDB
+
+ENTRYPOINT ["/data/script.sh"]
