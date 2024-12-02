@@ -2,7 +2,7 @@ services:
   sentinel:
     container_name: sentinel
     hostname: sentinel
-    build: .
+    build: muhammadqadora/redis-sentinel
     command: ["/data/sentinel.conf","--sentinel"]
     ports:
       - 26379:26379
@@ -11,7 +11,7 @@ services:
   sentinel2:
     container_name: sentinel2
     hostname: sentinel2
-    build: .
+    build: muhammadqadora/redis-sentinel
     command: ["/data/sentinel.conf","--sentinel"]
     ports:
       - 26380:26379
@@ -20,7 +20,7 @@ services:
   sentinel3:
     container_name: sentinel3
     hostname: sentinel3
-    build: .
+    build: muhammadqadora/redis-sentinel
     command: ["/data/sentinel.conf","--sentinel"]
     ports:
       - 26381:26379
@@ -29,7 +29,7 @@ services:
   redis:
     container_name: redis
     hostname: redis
-    build: .
+    build: muhammadqadora/redis-sentinel
     command: ["/data/node.conf"]
     ports:
       - 6379:6379
@@ -42,7 +42,7 @@ services:
   redis2:
     container_name: redis2
     hostname: redis2
-    build: .
+    build: muhammadqadora/redis-sentinel
     command: ["/data/node.conf","--replicaof redis 6379"]
     ports:
       - 6380:6379

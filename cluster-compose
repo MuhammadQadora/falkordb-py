@@ -2,7 +2,7 @@ services:
   node0:
     container_name: node0
     hostname: node0
-    build: .
+    build: muhammadqadora/redis-cluster
     command: ["/data/node.conf"]
     ports:
     - 6379:6379
@@ -11,7 +11,7 @@ services:
   node1:
     container_name: node1
     hostname: node1
-    build: .
+    build: muhammadqadora/redis-cluster
     command: ["/data/node.conf"]
     ports:
     - 6380:6379
@@ -20,7 +20,7 @@ services:
   node2:
     container_name: node2
     hostname: node2
-    build: .
+    build: muhammadqadora/redis-cluster
     command: ["/data/node.conf"]
     ports:
     - 6381:6379
@@ -29,7 +29,7 @@ services:
   node3:
     container_name: node3
     hostname: node3
-    build: .
+    build: muhammadqadora/redis-cluster
     command: ["/data/node.conf"]
     ports:
     - 6382:6379
@@ -38,7 +38,7 @@ services:
   node4:
     container_name: node4
     hostname: node4
-    build: .
+    build: muhammadqadora/redis-cluster
     command: ["/data/node.conf"]
     ports:
     - 6383:6379
@@ -47,7 +47,7 @@ services:
   node5:
     container_name: node5
     hostname: node5
-    build: .
+    build: muhammadqadora/redis-cluster
     command: ["/data/node.conf"]
     ports:
     - 6384:6379
