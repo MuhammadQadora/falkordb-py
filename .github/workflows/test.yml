@@ -34,11 +34,11 @@ jobs:
       
       - name: Add entries to the host file to correctly resolve service names
         run: |
-          sudo echo "127.0.0.1 redisstandalone" >> /etc/hosts
-          sudo echo "127.0.0.1 sentinel1" >> /etc/hosts
-          sudo echo "127.0.0.1 redis-sentinel" >> /etc/hosts
-          sudo echo "127.0.0.1 redis-sentinel2" >> /etc/hosts
-          sudo for i in node{0..5};do echo "$i" >> /etc/hosts ;done
+          sudo echo "127.0.0.1 redisstandalone" | sudo tee -a 
+          sudo echo "127.0.0.1 sentinel1" | sudo tee -a 
+          sudo echo "127.0.0.1 redis-sentinel" | sudo tee -a 
+          sudo echo "127.0.0.1 redis-sentinel2" | sudo tee -a 
+          sudo for i in node{0..5};do echo "$i" | sudo tee -a  ;done
 
       - uses: actions/setup-python@v5
         with:
