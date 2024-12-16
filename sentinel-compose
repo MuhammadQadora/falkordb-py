@@ -1,6 +1,6 @@
 services:
   sentinel1:
-    image: redis-falkor
+    image: muhammadqadora/falkor-redis
     container_name: sentinel1
     hostname: sentinel1
     restart: always
@@ -21,7 +21,7 @@ services:
       echo "port 26379" >> /data/sentinel.conf
       redis-server /data/sentinel.conf --sentinel
   sentinel2:
-    image: redis-falkor
+    image: muhammadqadora/falkor-redis
     container_name: sentinel2
     hostname: sentinel2
     restart: always
@@ -42,7 +42,7 @@ services:
       echo "port 26380" >> /data/sentinel.conf
       redis-server /data/sentinel.conf --sentinel
   sentinel3:
-    image: redis-falkor
+    image: muhammadqadora/falkor-redis
     container_name: sentinel3
     hostname: sentinel3
     restart: always
@@ -64,7 +64,7 @@ services:
       redis-server /data/sentinel.conf --sentinel
 
   redis-sentinel:
-    image: redis-falkor
+    image: muhammadqadora/falkor-redis
     hostname: redis-sentinel
     container_name: redis-sentinel
     ports:
@@ -82,7 +82,7 @@ services:
       echo "loadmodule /FalkorDB/bin/src/falkordb.so" >> /data/node.conf
       redis-server /data/node.conf
   redis-sentinel2:
-    image: redis-falkor
+    image: muhammadqadora/falkor-redis
     hostname: redis-sentinel2
     container_name: redis-sentinel2
     ports:
