@@ -6,16 +6,13 @@ on:
 
 jobs:
   test:
-    name: Test with Python ${{ matrix.python }}
+    name: Test with Python ${{ matrix.python }} and Dockerfile ${{ matrix.dockerfile }}
     runs-on: ubuntu-latest
     
     strategy:
       matrix:
         python: ['3.8', '3.10', '3.11']
-        dockerfile:
-          - ./standalone-compose
-          - dockerfile: ./sentinel-compose
-          - dockerfile: ./cluster-compose
+        dockerfile: ['./standalone-compose', './sentinel-compose', './cluster-compose']
       fail-fast: false
 
     steps:
@@ -28,7 +25,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{matrix.python}}
+          python-version: ${{ matrix.python }}
 
       - uses: snok/install-poetry@v1
         with:
@@ -47,4 +44,4 @@ jobs:
         if: matrix.python == '3.10' && matrix.platform != 'macos-11'
         with:
           fail_ci_if_error: false
-          token: ${{ secrets.CODECOV_TOKEN }}    
+          token: ${{ secrets.CODECOV_TOKEN }}
