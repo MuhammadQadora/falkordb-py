@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    name: Test with Python ${{ matrix.python }} and Dockerfile ${{ matrix.dockerfile }}
+    name: Test with Python ${{ matrix.python }}
     runs-on: ubuntu-latest
     
     strategy:
@@ -31,7 +31,15 @@ jobs:
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
           compose-file: ./cluster-compose
-
+      
+      - name: Add entries to the host file to correctly resolve service names
+        run: |
+          echo "127.0.0.1 redisstandalone" >> /etc/hosts
+          echo "127.0.0.1 sentinel1" >> /etc/hosts
+          echo "127.0.0.1 redis-sentinel" >> /etc/hosts
+          echo "127.0.0.1 redis-sentinel2" >> /etc/hosts
+          for i in node{0..5};do echo "$i" >> /etc/hosts ;done
+          
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
