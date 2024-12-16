@@ -12,16 +12,25 @@ jobs:
     strategy:
       matrix:
         python: ['3.8', '3.10', '3.11']
-        dockerfile: ['./standalone-compose', './sentinel-compose', './cluster-compose']
       fail-fast: false
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run docker-compose
+      - name: Run docker-compose for redis standalone instance
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
-          compose-file: ${{ matrix.dockerfile }}
+          compose-file: ./standalone-compose
+
+      - name: Run docker-compose for redis replication instance
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: ./sentinel-compose
+
+      - name: Run docker-compose for redis cluster instance
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: ./cluster-compose
 
       - uses: actions/setup-python@v5
         with:
