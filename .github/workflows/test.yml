@@ -12,6 +12,10 @@ jobs:
     strategy:
       matrix:
         python: ['3.8', '3.10', '3.11']
+        include:
+          - dockerfile: ./standalone-compose
+          - dockerfile: ./sentinel-compose
+          - dockerfile: ./cluster-compose
       fail-fast: false
 
     steps:
@@ -20,7 +24,7 @@ jobs:
       - name: Run docker-compose
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
-          compose-file: "./standalone-compose"
+          compose-file: ${{ matrix.dockerfile }}
 
       - uses: actions/setup-python@v5
         with:
