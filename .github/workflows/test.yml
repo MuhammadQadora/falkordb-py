@@ -12,8 +12,8 @@ jobs:
     strategy:
       matrix:
         python: ['3.8', '3.10', '3.11']
-        include:
-          - dockerfile: ./standalone-compose
+        dockerfile:
+          - ./standalone-compose
           # - dockerfile: ./sentinel-compose
           # - dockerfile: ./cluster-compose
       fail-fast: false
