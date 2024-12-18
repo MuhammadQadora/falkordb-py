@@ -54,8 +54,10 @@ jobs:
 
       - name: Install dependencies
         run: poetry install --no-interaction
+
       - name: working dir
-        run: echo $PWD
+        run: echo $PWD; which docker-compose
+
       - name: Run Tests
         run: poetry run pytest --cov --cov-report=xml
 
