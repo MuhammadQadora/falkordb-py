@@ -2,7 +2,7 @@ import pytest
 import subprocess
 from falkordb import FalkorDB
 import time
-
+import os
 def delete_container(container_name):
     subprocess.run(["docker","rm",container_name,'-f'],check=True,encoding='utf-8')
 
@@ -87,9 +87,10 @@ def test_get_replica_connections_cluster_no_replicas():
         c.get_replica_connections()
     reapply_compose('/home/runner/work/falkordb-py/falkordb-py/cluster-compose')
 
-
+print(os.getcwd())
 def test_get_replica_connections_sentinel_no_replicas():
     # Assume this Sentinel setup has no replicas
+    print(os.getcwd())
     delete_replicas(sentinel_client(),'sentinel')
     time.sleep(40)
     c = sentinel_client()
