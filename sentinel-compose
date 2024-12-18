@@ -17,6 +17,8 @@ services:
       echo "sentinel announce-hostnames yes" >> /data/sentinel.conf
       echo "sentinel announce-ip sentinel1" >> /data/sentinel.conf
       echo "sentinel resolve-hostnames yes" >> /data/sentinel.conf
+      echo "sentinel down-after-milliseconds master 500" >> /data/node.conf
+      echo "sentinel failover-timeout master 500" >> /data/node.conf
       echo "sentinel announce-port 26379" >> /data/sentinel.conf
       echo "port 26379" >> /data/sentinel.conf
       redis-server /data/sentinel.conf --sentinel
@@ -38,6 +40,8 @@ services:
       echo "sentinel announce-hostnames yes" >> /data/sentinel.conf
       echo "sentinel announce-ip sentinel2" >> /data/sentinel.conf
       echo "sentinel resolve-hostnames yes" >> /data/sentinel.conf
+      echo "sentinel down-after-milliseconds master 500" >> /data/node.conf
+      echo "sentinel failover-timeout master 500" >> /data/node.conf
       echo "sentinel announce-port 26380" >> /data/sentinel.conf
       echo "port 26380" >> /data/sentinel.conf
       redis-server /data/sentinel.conf --sentinel
@@ -58,7 +62,9 @@ services:
       echo "sentinel monitor master redis-sentinel 6380 2" >> /data/sentinel.conf
       echo "sentinel announce-hostnames yes" >> /data/sentinel.conf
       echo "sentinel announce-ip sentinel3" >> /data/sentinel.conf
+      echo "sentinel failover-timeout master 500" >> /data/node.conf
       echo "sentinel resolve-hostnames yes" >> /data/sentinel.conf
+      echo "sentinel down-after-milliseconds master 500" >> /data/node.conf
       echo "sentinel announce-port 26381" >> /data/sentinel.conf
       echo "port 26381" >> /data/sentinel.conf
       redis-server /data/sentinel.conf --sentinel
