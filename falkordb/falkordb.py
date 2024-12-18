@@ -244,7 +244,6 @@ class FalkorDB:
         if hasattr(self, 'sentinel') and self.sentinel is not None:
             try:
                 replica_hostnames = self.sentinel.discover_slaves(service_name=self.service_name)
-                print(replica_hostnames)
                 if not replica_hostnames:
                     raise ConnectionError("Unable to get replica hostname.")
                 return [(host, int(port)) for host, port in replica_hostnames]

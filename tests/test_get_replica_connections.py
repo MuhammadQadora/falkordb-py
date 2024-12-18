@@ -12,7 +12,7 @@ def reapply_compose(path):
 def cluster_client():
     client = FalkorDB(
         host='localhost',
-        port=5001
+        port=5000
     )
     return client
 
