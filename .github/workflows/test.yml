@@ -59,7 +59,9 @@ jobs:
         run: |
           echo $PWD
           which docker-compose
-
+      - name: install docker-compose client
+        run: sudo apt update && sudo apt install docker-compose -y
+        
       - name: Run Tests
         run: poetry run pytest --cov --cov-report=xml
 
